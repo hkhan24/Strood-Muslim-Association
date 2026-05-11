@@ -1,34 +1,5 @@
 import React from 'react';
-
-const serviceDetails = [
-  {
-    icon: 'calendar',
-    label: 'Date',
-    value: 'Friday 8th May',
-  },
-  {
-    icon: 'clock',
-    label: 'Start',
-    value: '1:00 PM',
-    highlighted: true,
-  },
-  {
-    icon: 'people',
-    label: 'Jamaat',
-    value: '1:30 PM',
-    highlighted: true,
-  },
-  {
-    icon: 'book',
-    label: 'Topic',
-    value: 'Combating Individualism',
-  },
-  {
-    icon: 'person',
-    label: 'Imam',
-    value: 'Ustadh Ismail Zubair',
-  },
-];
+import { siteConfig } from '../siteConfig';
 
 const icons = {
   calendar: (
@@ -54,14 +25,6 @@ const icons = {
       <path d="M16 3.13a4 4 0 0 1 0 7.75" />
     </svg>
   ),
-  book: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-      <line x1="8" y1="7" x2="16" y2="7" />
-      <line x1="8" y1="11" x2="13" y2="11" />
-    </svg>
-  ),
   person: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -70,58 +33,103 @@ const icons = {
   ),
 };
 
-function DetailRow({ icon, label, value, highlighted }) {
+function DetailRow({ icon, label, value, highlight }) {
   return (
-    <div className={`flex items-center gap-4 px-5 py-3.5 rounded-xl transition-all duration-200 hover:bg-cream-200/60 group
-      ${highlighted ? 'bg-cream-200/40' : ''}`}
-    >
-      {/* Icon */}
-      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-800 flex items-center justify-center
-                      text-gold-500 shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-200">
+    <div className={`flex items-center gap-4 px-5 py-4 rounded-xl transition-all duration-200
+                     hover:bg-green-900/5 group ${highlight ? 'bg-green-900/5' : ''}`}>
+      <div className="flex-shrink-0 w-11 h-11 rounded-full bg-green-900/10 flex items-center justify-center
+                      text-green-800 group-hover:bg-green-900/20 group-hover:scale-105 transition-all duration-200 shadow-sm">
         {icons[icon]}
       </div>
-
-      {/* Label */}
-      <span className="font-sans font-semibold text-green-800 text-sm sm:text-base min-w-[60px]">
-        {label}:
+      <span className="font-sans font-semibold text-green-900/80 text-base min-w-[70px] uppercase tracking-wide">
+        {label}
       </span>
-
-      {/* Value */}
-      <span className={`font-sans font-bold text-sm sm:text-base flex-1
-        ${highlighted ? 'text-green-900 text-base sm:text-lg' : 'text-green-800'}`}>
+      <span className={`font-sans font-extrabold flex-1 text-right sm:text-left
+        ${highlight ? 'text-green-950 text-xl sm:text-2xl' : 'text-green-900 text-lg sm:text-xl'}`}>
         {value}
       </span>
     </div>
   );
 }
 
-export default function ServiceDetailsSection() {
+function PrayerCard({ title, children }) {
   return (
-    <section id="service" className="bg-cream-100 py-10 sm:py-14 px-4" aria-labelledby="service-heading">
-      <div className="max-w-xl mx-auto">
-        {/* Section label */}
-        <div className="text-center mb-6">
-          <span className="inline-block font-sans text-[0.7rem] tracking-[0.25em] uppercase text-gold-500 font-semibold
-                          bg-green-900/5 px-4 py-1.5 rounded-full border border-gold-500/20">
-            Service Details
-          </span>
-        </div>
+    <div className="bg-cream-100 rounded-3xl overflow-hidden shadow-2xl border-2 border-gold-500/40 relative transform transition-all hover:-translate-y-1 hover:shadow-gold-500/20">
+      {/* Bold Gold top stripe */}
+      <div className="h-[6px] bg-gradient-to-r from-gold-600 via-gold-400 to-gold-600" />
 
-        {/* Service details card */}
-        <div className="bg-white/70 backdrop-blur-sm rounded-2xl border-2 border-gold-500/25 shadow-lg shadow-green-900/5
-                        overflow-hidden">
-          {/* Card header stripe */}
-          <div className="h-1.5 bg-gradient-to-r from-green-800 via-gold-500 to-green-800" />
+      {/* Title */}
+      <div className="px-5 pt-8 pb-4 border-b border-green-900/10 bg-white/50">
+        <h3 className="font-serif text-green-950 text-3xl sm:text-4xl font-extrabold text-center tracking-tight">
+          {title}
+        </h3>
+      </div>
 
-          {/* Detail rows */}
-          <div className="divide-y divide-cream-300/50 py-2">
-            {serviceDetails.map((detail) => (
-              <DetailRow key={detail.label} {...detail} />
-            ))}
+      {/* Content */}
+      <div className="px-2 py-4">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+export default function ServiceDetailsSection() {
+  const { jummah, eid } = siteConfig;
+
+  const jummahFields = [
+    { icon: 'calendar', label: 'Day', value: jummah.date },
+    { icon: 'clock', label: 'Starts', value: jummah.startTime, highlight: true },
+    { icon: 'people', label: 'Jamaat', value: jummah.jamaatTime, highlight: true },
+    { icon: 'person', label: 'Imam', value: jummah.imam },
+  ];
+
+  const eidFields = eid ? [
+    { icon: 'calendar', label: 'Date', value: eid.date },
+    { icon: 'clock', label: 'Time', value: eid.time, highlight: true },
+  ] : [];
+
+  return (
+    <section
+      id="prayer"
+      className="relative bg-green-950 py-20 sm:py-28 px-5 sm:px-8 overflow-hidden"
+      aria-labelledby="prayer-heading"
+    >
+      {/* Background pattern */}
+      <div className="absolute inset-0 geometric-pattern opacity-60" />
+
+      {/* Radial glow */}
+      <div className="absolute inset-0" style={{
+        background: 'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.1) 0%, transparent 70%)'
+      }} />
+
+      <div className="relative max-w-2xl mx-auto">
+        <h2 id="prayer-heading" className="sr-only">Prayer Times</h2>
+
+        {/* Cards grid */}
+        <div className="space-y-10">
+          {/* Jummah Prayer Card */}
+          <div className="reveal">
+            <PrayerCard title="Jummah Prayer">
+              <div className="divide-y divide-green-900/10 py-1">
+                {jummahFields.map((field) => (
+                  <DetailRow key={field.label} {...field} />
+                ))}
+              </div>
+            </PrayerCard>
           </div>
 
-          {/* Card footer stripe */}
-          <div className="h-1 bg-gradient-to-r from-transparent via-gold-500/40 to-transparent" />
+          {/* Eid Prayer Card */}
+          {eid && (
+            <div className="reveal">
+              <PrayerCard title="Eid Prayer">
+                <div className="divide-y divide-green-900/10 py-1">
+                  {eidFields.map((field) => (
+                    <DetailRow key={field.label} {...field} />
+                  ))}
+                </div>
+              </PrayerCard>
+            </div>
+          )}
         </div>
       </div>
     </section>
