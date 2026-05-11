@@ -25,10 +25,7 @@ export const siteConfig = {
   },
 
   // ─── Eid Prayer (set to null to hide) ────────────────────────────
-  eid: {
-    date: "Wednesday 27th May",
-    time: "7:30 AM",
-  },
+  eid: null,
 
   dailyPrayers: {
     city: "Strood",
