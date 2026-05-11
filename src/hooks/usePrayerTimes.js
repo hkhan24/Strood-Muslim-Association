@@ -40,6 +40,26 @@ export function usePrayerTimes() {
         const data = await response.json();
         const t = data.data.timings;
         
+        // Determine current prayer
+        const now = new Date();
+        const currentMins = now.getHours() * 60 + now.getMinutes();
+        
+        const parseToMins = (time24) => {
+          const [h, m] = time24.split(' ')[0].split(':').map(Number);
+          return h * 60 + m;
+        };
+
+        const prayerKeys = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+        let activePrayer = 'Isha'; // Defaults to Isha if before Fajr
+        
+        for (const p of prayerKeys) {
+          if (currentMins >= parseToMins(t[p])) {
+            activePrayer = p;
+          } else {
+            break;
+          }
+        }
+
         // We only want the core 6 times, formatted nicely
         setTimes({
           Fajr: formatTo12Hour(t.Fajr),
@@ -51,6 +71,7 @@ export function usePrayerTimes() {
           date: data.data.date.readable,
           methodName: data.data.meta.method.name,
           city: city,
+          currentPrayer: activePrayer,
         });
         setLoading(false);
       } catch (err) {

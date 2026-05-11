@@ -30,20 +30,26 @@ export default function DailyPrayerTimes() {
       {/* Grid of times */}
       <div className="px-2 py-4">
         <div className="grid grid-cols-2 sm:grid-cols-3 divide-x divide-y divide-green-900/10">
-          {['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'].map((prayer, i) => (
-            <div key={prayer} className={`p-4 sm:p-5 flex flex-col items-center justify-center gap-1 transition-colors hover:bg-green-900/5 ${i < 2 ? 'border-t-0' : ''} ${i % 2 === 0 ? 'border-l-0' : ''} sm:border-l sm:border-t-0`}>
-              <span className="font-sans text-green-900/60 text-xs uppercase tracking-[0.15em] font-bold">
-                {prayer}
-              </span>
-              {loading ? (
-                <div className="h-6 sm:h-7 w-16 bg-green-900/10 rounded animate-pulse mt-1" />
-              ) : (
-                <span className="font-sans font-extrabold text-green-950 text-xl sm:text-2xl">
-                  {times[prayer]}
+          {['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'].map((prayer, i) => {
+            const isActive = times?.currentPrayer === prayer;
+            return (
+              <div key={prayer} className={`p-4 sm:p-5 flex flex-col items-center justify-center gap-1 transition-colors ${isActive ? 'bg-gold-500/10 shadow-[inset_0_0_20px_rgba(201,168,76,0.1)] relative' : 'hover:bg-green-900/5'} ${i < 2 ? 'border-t-0' : ''} ${i % 2 === 0 ? 'border-l-0' : ''} sm:border-l sm:border-t-0`}>
+                {isActive && (
+                  <div className="absolute inset-x-0 top-0 h-[3px] bg-gold-500" />
+                )}
+                <span className={`font-sans text-xs uppercase tracking-[0.15em] font-bold ${isActive ? 'text-gold-600' : 'text-green-900/60'}`}>
+                  {prayer}
                 </span>
-              )}
-            </div>
-          ))}
+                {loading ? (
+                  <div className="h-6 sm:h-7 w-16 bg-green-900/10 rounded animate-pulse mt-1" />
+                ) : (
+                  <span className={`font-sans font-extrabold ${isActive ? 'text-green-950 text-2xl sm:text-3xl' : 'text-green-950 text-xl sm:text-2xl'}`}>
+                    {times[prayer]}
+                  </span>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
       
