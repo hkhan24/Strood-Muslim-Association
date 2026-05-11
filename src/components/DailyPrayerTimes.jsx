@@ -33,11 +33,11 @@ export default function DailyPrayerTimes() {
           {['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'].map((prayer, i) => {
             const isActive = times?.currentPrayer === prayer;
             return (
-              <div key={prayer} className={`p-4 sm:p-5 flex flex-col items-center justify-center gap-1 transition-colors ${isActive ? 'bg-gold-500/10 shadow-[inset_0_0_20px_rgba(201,168,76,0.1)] relative' : 'hover:bg-green-900/5'} ${i < 2 ? 'border-t-0' : ''} ${i % 2 === 0 ? 'border-l-0' : ''} sm:border-l sm:border-t-0`}>
+              <div key={prayer} className={`p-4 sm:p-5 flex flex-col items-center justify-center gap-1 transition-colors ${isActive ? 'bg-green-200 shadow-inner relative' : 'hover:bg-green-900/5'} ${i < 2 ? 'border-t-0' : ''} ${i % 2 === 0 ? 'border-l-0' : ''} sm:border-l sm:border-t-0`}>
                 {isActive && (
-                  <div className="absolute inset-x-0 top-0 h-[3px] bg-gold-500" />
+                  <div className="absolute inset-x-0 top-0 h-[4px] bg-green-600" />
                 )}
-                <span className={`font-sans text-xs uppercase tracking-[0.15em] font-bold ${isActive ? 'text-gold-600' : 'text-green-900/60'}`}>
+                <span className={`font-sans text-xs uppercase tracking-[0.15em] font-bold ${isActive ? 'text-green-900' : 'text-green-900/60'}`}>
                   {prayer}
                 </span>
                 {loading ? (
