@@ -30,7 +30,7 @@ export const siteConfig = {
   dailyPrayers: {
     city: "Strood",
     country: "United Kingdom",
-    method: 4, // 4 = Umm Al-Qura University, Makkah. See https://aladhan.com/prayer-times-api#GetCalendarByCitys for methods
+    method: 10, // 10 = Moonsighting Committee. See https://aladhan.com/prayer-times-api#GetCalendarByCitys for methods
   },
 
   // ─── Location ────────────────────────────────────────────────────
