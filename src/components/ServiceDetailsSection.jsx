@@ -1,5 +1,6 @@
 import React from 'react';
 import { siteConfig } from '../siteConfig';
+import DailyPrayerTimes from './DailyPrayerTimes';
 
 const icons = {
   calendar: (
@@ -130,6 +131,17 @@ export default function ServiceDetailsSection() {
               </PrayerCard>
             </div>
           )}
+
+          {/* Daily Prayer Times */}
+          <div className="reveal mt-12 pt-8 border-t border-green-900/10 relative">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gold-500/20">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path d="M12 2L15 8H9L12 2Z" />
+                <path d="M12 22L9 16H15L12 22Z" />
+              </svg>
+            </div>
+            <DailyPrayerTimes />
+          </div>
         </div>
       </div>
     </section>

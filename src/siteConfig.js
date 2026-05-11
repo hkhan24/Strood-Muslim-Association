@@ -30,6 +30,13 @@ export const siteConfig = {
     time: "7:30 AM",
   },
 
+  // ─── Daily Prayer Times API ──────────────────────────────────────
+  dailyPrayers: {
+    city: "Rochester",
+    country: "United Kingdom",
+    method: 4, // 4 = Umm Al-Qura University, Makkah. See https://aladhan.com/prayer-times-api#GetCalendarByCitys for methods
+  },
+
   // ─── Location ────────────────────────────────────────────────────
   location: {
     venueName: "Frindsbury Extra Memorial Hall",
