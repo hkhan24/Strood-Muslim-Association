@@ -49,6 +49,8 @@ export function usePrayerTimes() {
           Maghrib: formatTo12Hour(t.Maghrib),
           Isha: formatTo12Hour(t.Isha),
           date: data.data.date.readable,
+          methodName: data.data.meta.method.name,
+          city: city,
         });
         setLoading(false);
       } catch (err) {

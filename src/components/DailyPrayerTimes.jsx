@@ -50,7 +50,11 @@ export default function DailyPrayerTimes() {
       {/* Footer / Notice */}
       <div className="px-6 py-4 bg-green-900/5 border-t border-green-900/10 text-center">
         <p className="font-sans text-green-800 text-[0.7rem] sm:text-xs font-semibold">
-          These are calculated beginning times. The mosque currently only holds Jummah and Eid congregations.
+          These are calculated beginning times for {times?.city}.
+          <br className="hidden sm:block" />
+          <span className="font-normal opacity-80 mt-1 block">
+            Method: {times?.methodName}
+          </span>
         </p>
       </div>
     </div>
