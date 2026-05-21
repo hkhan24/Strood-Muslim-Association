@@ -13,9 +13,9 @@ export const siteConfig = {
   established: 2026,
   tagline: "A Place of Peace in the Heart of Strood",
   subtitle:
-    "Join our growing community for weekly Jummah prayer and special occasions",
+    "Join our growing community for weekly Jummu'ah prayer and special occasions",
 
-  // ─── Jummah Prayer ───────────────────────────────────────────────
+  // ─── Jummu'ah Prayer ──────────────────────────────────────────────
   // UPDATE THIS SECTION EVERY WEEK
   jummah: {
     date: "Every Friday",
@@ -72,7 +72,7 @@ export const siteConfig = {
     heading: "Our Beginning",
     paragraphs: [
       "Founded in May 2026, the Strood Muslim Association was born from a simple yet powerful idea — that the Muslim community in Strood and the surrounding Medway towns deserves a welcoming, accessible space for congregational worship.",
-      "What began as a small gathering for Jummah prayer has quickly grown into a vibrant community. Every Friday, we come together at Frindsbury Extra Memorial Hall to pray, reflect, and strengthen our bonds as neighbours, families, and friends.",
+      "What began as a small gathering for Jummu'ah prayer has quickly grown into a vibrant community. Every Friday, we come together at Frindsbury Extra Memorial Hall to pray, reflect, and strengthen our bonds as neighbours, families, and friends.",
       "We are more than a prayer service — we are a community taking its first steps together, guided by the needs and aspirations of every member who walks through our doors.",
     ],
   },
@@ -86,7 +86,7 @@ export const siteConfig = {
         icon: "mosque",
         title: "Rooted in Worship",
         description:
-          "Our foundation is the weekly Jummah prayer and special occasions such as Eid Salah. As we grow, our services will expand to meet the spiritual needs of our community.",
+          "Our foundation is the weekly Jummu'ah prayer and special occasions such as Eid Salah. As we grow, our services will expand to meet the spiritual needs of our community.",
       },
       {
         icon: "community",

@@ -59,7 +59,7 @@ export default function DailyPrayerTimes() {
           ⚠️ These times are for <strong>personal reference only</strong> and are not held at the mosque.
           <br />
           <span className="font-normal opacity-80 mt-1 block">
-            Currently, only <strong>Jummah (Friday) prayer</strong> is held at our venue. Daily prayer times shown above are calculated beginning times for {times?.city} ({times?.methodName}).
+            Currently, only <strong>Jummu'ah (Friday) prayer</strong> is held at our venue. Daily prayer times shown above are calculated beginning times for {times?.city} ({times?.methodName}).
           </span>
         </p>
       </div>

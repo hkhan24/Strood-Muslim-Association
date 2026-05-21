@@ -98,9 +98,9 @@ export default function ServiceDetailsSection() {
 
         {/* Cards grid */}
         <div className="space-y-10">
-          {/* Jummah Prayer Card */}
+          {/* Jummu'ah Prayer Card */}
           <div className="reveal">
-            <PrayerCard title="Jummah Prayer">
+            <PrayerCard title="Jummu'ah Prayer">
               <div className="divide-y divide-green-900/10 py-1">
                 {jummahFields.map((field) => (
                   <DetailRow key={field.label} {...field} />
