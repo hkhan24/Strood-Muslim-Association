@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
+import GallerySection from './components/GallerySection';
 import ServiceDetailsSection from './components/ServiceDetailsSection';
 import VisionSection from './components/VisionSection';
 import LocationSection from './components/LocationSection';
@@ -36,6 +37,7 @@ export default function App() {
       <main>
         <HeroSection />
         <AboutSection />
+        <GallerySection />
         <ServiceDetailsSection />
         <VisionSection />
         <LocationSection />
